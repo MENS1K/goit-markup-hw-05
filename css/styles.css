@@ -15,6 +15,8 @@
   --padding-portfolio: 24px;
   --padding-section: 94px;
   --social-link-fill: #afb1b8;
+  --typical-duration: 250ms;
+  --typical-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 p,
 h1,
@@ -105,20 +107,29 @@ body {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+  position: relative;
 }
 .site-nav {
   display: flex;
   margin-left: 93px;
 }
-/* .header-item {
-  background-color: orange;
-} */
+
 .site-nav .header-item + .header-item {
   margin-left: 50px;
 }
 
 .site-nav .header-link.current {
   color: var(--accent-color);
+}
+.site-nav .header-link.current::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+  left: 0;
+  bottom: -1px;
 }
 .header-info {
   display: flex;
@@ -150,6 +161,7 @@ body {
 .info-link:hover,
 .info-link:focus {
   color: var(--accent-color);
+  transition: var(--typical-duration) var(--typical-timing-function);
 }
 /* Hero */
 .hero {
@@ -199,6 +211,7 @@ body {
 .hero-btn:hover,
 .hero-btn:focus {
   background-color: #188ce8;
+  transition: var(--typical-duration) var(--typical-timing-function);
 }
 /* Преимущества */
 .benefits {
@@ -336,6 +349,7 @@ body {
 .team-soc-link:focus {
   background-color: var(--accent-color);
   fill: var(--second-title-color);
+  transition: var(--typical-duration) var(--typical-timing-function);
 }
 
 /* Постоянные клиенты */
@@ -378,6 +392,7 @@ body {
   border-color: var(--accent-color);
   fill: var(--accent-color);
   outline: none;
+  transition: var(--typical-duration) var(--typical-timing-function);
 }
 
 /* Footer */
@@ -418,6 +433,7 @@ body {
 .footer-info-link:hover,
 .footer-info-link:focus {
   color: var(--accent-color);
+  transition: var(--typical-duration) var(--typical-timing-function);
 }
 .footer-soc-link {
   margin-left: 70px;
@@ -458,6 +474,7 @@ body {
 .soc-link:hover,
 .soc-link:focus {
   background-color: var(--accent-color);
+  transition: var(--typical-duration) var(--typical-timing-function);
 }
 /* Portfolio */
 .main-section {
@@ -493,6 +510,7 @@ body {
   background-color: var(--accent-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
+  transition: var(--typical-duration) var(--typical-timing-function);
 }
 .main-content-list {
   display: flex;
@@ -504,7 +522,30 @@ body {
 .main-content-item:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+  transition: var(--typical-duration) var(--typical-timing-function);
 }
+.content-link {
+  position: relative;
+  overflow: hidden;
+}
+.content-top-text {
+  position: absolute;
+  top: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  background-color: rgba(33, 150, 243, 0.9);
+  color: var(--second-title-color);
+  padding: 63px;
+  height: 100%;
+  transform: translateY(-100%);
+  transition: transform var(--typical-duration) linear;
+}
+.content-top-text:hover {
+  transform: translateY(0);
+}
+
 .content-wrap {
   padding-top: 20px;
   padding-left: var(--padding-portfolio);
